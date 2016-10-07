@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="css/malandbot.css"></link>
+    <title>MalandBot App</title>
+</head>
+
+<body>
+    <video id="remoteVideo" autoplay></video>
+    <video id="localVideo" autoplay muted></video>
+
+    <div class="container" id="malandbot">
+        <div class="row" style="margin-top: 20px; margin-bottom: 50px;">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="peerHost">Peer Host</label>
+                    <input type="text" class="form-control" name="peerHost" id="peerHost" value="172.20.10.10" />
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="peerHost">Peer Port</label>
+                    <input type="text" class="form-control" name="peerHost" id="peerPort" value="9000" />
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="status">Conn. Status</label>
+                    <input type="text" class="form-control" name="status" id="status" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/peer.js"></script>
+    <script src="js/webrtc-client.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="css/malandbot.css"></link>
+    <title>MalandBot App</title>
+</head>
+
+<body>
+    <video id="remoteVideo" autoplay></video>
+    <video id="localVideo" autoplay muted></video>
+
+    <div class="container" id="malandbot">
+        <div class="row">
+            <div class="col-xs-4 col-xs-push-2">
+                <button id="videoCallButton" class="btn btn-block btn-success">Conectar</button>
+            </div>
+            <div class="col-xs-4 col-xs-push-2">
+                <button id="endCallButton" class="btn btn-block btn-error">Desconectar</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <button id="btn-forward" class="btn btn-block btn-success">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="col-xs-4">
+                <button id="btn-left" class="btn btn-block btn-success">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+            </button>
+            </div>
+            <div class="col-xs-4">
+                <button id="btn-on-off" class="btn btn-block btn-warning">
+                <span class="glyphicon glyphicon-stop"></span>
+            </button>
+            </div>
+            <div class="col-xs-4">
+                <button id="btn-right" class="btn btn-block btn-success">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <button id="btn-backward" class="btn btn-block btn-success">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+            </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px; margin-bottom: 50px;">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="peerHost">Peer Host</label>
+                    <input type="text" class="form-control" name="peerHost" id="peerHost" value="172.20.10.10" />
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="peerHost">Peer Port</label>
+                    <input type="text" class="form-control" name="peerHost" id="peerPort" value="9000" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mqttws31.js"></script>
+    <script src="js/adapter.js"></script>
+    <script src="js/controlls.js"></script>
+    <script src="js/peer.js"></script>
+    <script src="js/webrtc.js"></script>
+</body>
+
+</html>

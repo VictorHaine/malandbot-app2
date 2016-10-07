@@ -1,0 +1,18 @@
+
+#malandbot {
+    max-width: 500px;
+}
+
+#remoteVideo {
+    border: 1px solid royalblue;
+    display: block;
+    height: 300px;
+    margin: 20px auto;
+}
+
+#localVideo {
+    border: 1px solid orangered;
+    display: block;
+    height: 100px;
+    margin: -100px 33% 50px 67%;
+}
