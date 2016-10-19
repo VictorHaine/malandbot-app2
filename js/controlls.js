@@ -1,30 +1,43 @@
 $(document).ready(function () {
 
-    // MQTT Vars
-    var url = "wss://iot.eclipse.org:443/ws/";
-    //var url = "192.168.137.1";
-    //var port = 8080;
-    var clientID = "malandbot";
-    var publishDestination = "MQTTMalandbotEnvia";
-    var subscribeDestination = "MQTTMalandbotRecebe";
-
-    // MQTT
-    //client = new Paho.MQTT.Client(url, port, clientID);
-    client = new Paho.MQTT.Client(url, clientID);
-    client.onMessageArrived = function (message) {
-        console.log("Message Arrived: " + message.payloadString);
+    var config = {
+        client: null,
+        clientID: 'malandbot',
+        publishDestination: 'MQTTMalandbotEnvia',
+        subscribeDestination: 'MQTTMalandbotRecebe',
+        brokerHost: $('#brokerHost')
     };
-    client.connect({
-        onSuccess: function () {
-            console.log("Conectado ao MQTT");
-//            client.subscribe(subscribeDestination);
-        }
+
+    config.brokerHost.change(function () {
+        connectBroker();
     });
+    connectBroker();
+
+
+    function connectBroker() {
+        config.client = new Paho.MQTT.Client(config.brokerHost.val(), config.clientID);
+        config.client.connect({
+            onSuccess: function () {
+                console.log('Conectado ao MQTT');
+            },
+            onFailure: function (e) {
+                console.log('Erro ao conectar ao broker - ', e);
+            }
+        });
+    }
 
     function publishMQTTCommand(command) {
-        var m = new Paho.MQTT.Message(command);
-        m.destinationName = publishDestination;
-        client.send(m);
+        try {
+            if (config.client) {
+                var m = new Paho.MQTT.Message(command);
+                m.destinationName = config.publishDestination;
+                config.client.send(m);
+            } else {
+                console.log('MQTT não conectado');
+            }
+        } catch (error) {
+            console.log('Erro ao publicar o command - ', error);
+        }
     }
 
     $("#btn-forward")
