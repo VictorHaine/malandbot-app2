@@ -1,0 +1,28 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    /*overflow-y: hidden;*/
+    min-height: 334px;
+    min-width: 400px;
+}
+
+#remoteVideo {
+    background-color: #000;
+    display: block;
+    height: 100%;
+    width: 100%;
+    /*border: 1px solid royalblue;
+    display: block;
+    height: 300px;
+    margin: 20px auto;*/
+}
+
+#localVideo {
+    border: 2px solid white;
+    display: block;
+    height: 20%;
+    position: absolute;
+    top: 75%;
+    left: 10%;
+}

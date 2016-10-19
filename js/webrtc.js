@@ -1,29 +1,26 @@
 $(document).ready(function () {
 
-    var store = {
-        videoCallButton: $("#videoCallButton"),
-        endCallButton: $("#endCallButton"),
-        localVideo: $("#localVideo"),
-        remoteVideo: $("#remoteVideo"),
-        peerHost: $("#peerHost"),
-        peerPort: $("#peerPort"),
-        peerPath: '/malandbot',
-        peerClient: null
-    };
-
-    store.videoCallButton.click(function () {
-        connectVideo();
-    });
-    store.peerHost.change(function () {
-        resetVideo();
-    });
-    store.peerPort.change(function () {
-        resetVideo();
-    });
-
+    var peerClient = null;
     resetVideo();
 
+    function getStore() {
+        var ret = {
+            videoCallButton: $("#videoCallButton"),
+            endCallButton: $("#endCallButton"),
+            localVideo: $('#localVideo'),
+            remoteVideo: $('#remoteVideo'),
+            peerHost: $('#peerHost').val() ? $('#peerHost').val() : window.location.hostname,
+            peerPort: $('#peerPort').val() ? $('#peerPort').val() : 9000,
+            peerPath: '/malandbot',
+            peerClient: peerClient
+        };
+
+        console.log('Get Store: ', ret);
+        return ret;
+    }
+
     function resetVideo() {
+        var store = getStore();
         store.peerClient = null;
         store.localVideo.attr("src", null);
         store.remoteVideo.attr("src", null);
@@ -32,10 +29,12 @@ $(document).ready(function () {
     }
 
     function connectVideo() {
+        var store = getStore();
+
         if (!store.peerClient) {
             store.peerClient = new Peer('controlador', {
-                host: store.peerHost.val(),
-                port: store.peerPort.val(),
+                host: store.peerHost,
+                port: store.peerPort,
                 path: store.peerPath
             });
         }
